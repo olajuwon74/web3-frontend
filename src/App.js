@@ -43,6 +43,7 @@ function App() {
       const userMaticBal = await provider.getBalance(address);
       const BRTContractInstance = new Contract(BRTTokenAddress, BRTTokenAbi, provider);
       const userBRTBalance = await BRTContractInstance.balanceOf(address)
+      await getStake();
       return {userBRTBalance, userMaticBal}
     }catch(err) {
       console.log(err)
@@ -192,19 +193,41 @@ function App() {
     const BRTContractInstance = new Contract(BRTTokenAddress, BRTTokenAbi, signer);
     const weiValue = utils.parseEther(stakeInput);
     const stakeTx = await BRTContractInstance.stakeBRT(weiValue);
-
+    await getStake();
+    setStakeInput("")
     const stakeTxHash = await provider.getTransaction(stakeTx.hash)
     const response = await stakeTx.wait();
-
     const address = response.events[1].args[0]
     const amountStaked = response.events[1].args[1].toString()
     const time = response.events[1].args[2].toString()
-
     
   }
+  
+  const getStake = async (e) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const BRTContractInstance = new Contract(BRTTokenAddress, BRTTokenAbi, signer);
+    const myStake = await BRTContractInstance.myStake();
+    setStakeAmount(utils.formatUnits(myStake.stakeAmount, 18));
 
-  const onClickWithdraw = (e) => {
+    const 
+  }
+
+  const onClickWithdraw = async(e) => {
     e.preventDefault()
+     if(stakeInput < 0) return alert("you cannot stake less than 0 BRT")
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const BRTContractInstance = new Contract(BRTTokenAddress, BRTTokenAbi, signer);
+    const weiValue = utils.parseEther(withdrawInput);
+    const withdrawTx = await BRTContractInstance.withdraw(weiValue);
+    const withdrawTxHash = await provider.getTransaction(withdrawTx.hash)
+    const response = await withdrawTx.wait();
+    await getStake();
+    const address = response.events[1].args[0]
+    const amountStaked = response.events[1].args[1].toString()
+    const time = response.events[1].args[2].toString()
     console.log("unstaking...........", withdrawInput);
   }
 
