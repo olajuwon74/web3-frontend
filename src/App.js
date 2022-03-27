@@ -209,8 +209,6 @@ function App() {
     const BRTContractInstance = new Contract(BRTTokenAddress, BRTTokenAbi, signer);
     const myStake = await BRTContractInstance.myStake();
     setStakeAmount(utils.formatUnits(myStake.stakeAmount, 18));
-
-    const 
   }
 
   const onClickWithdraw = async(e) => {
