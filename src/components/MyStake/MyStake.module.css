@@ -52,6 +52,24 @@
     cursor: pointer;
 }
 
+
+.check_btn {
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    background-color: transparent;
+    border-radius: 0.3rem;
+    border: 1px solid rgb(8, 153, 107);
+    margin-left: 1rem;
+    width: 6rem;
+    color: rgb(168, 164, 164);
+    cursor: pointer;
+  }
+  
+  .check_btn:hover {
+    background-color: rgb(8, 153, 107);
+    color: #fff;
+  }
+
 .btn_diabled {
     background-color: rgb(168, 164, 164);
     cursor: not-allowed;;

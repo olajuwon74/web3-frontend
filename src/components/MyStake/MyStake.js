@@ -6,13 +6,18 @@ import Styles from './MyStake.module.css'
 const MyStake = ({
   withdrawInput, 
   stakeInput, 
+  checkBalInput,
   onChangeInput, 
   onClickStake, 
   onClickWithdraw,
+  onCheckDetails,
+  userDetails,
   rewardAmount,
   stakeAmount,
-  connected
+  connected,
 }) => {
+  const{ amount, address, time, valid} = userDetails;
+
   return (
     <div className={Styles.root}>
         <h2 className={Styles.heading}>My stake</h2>
@@ -56,9 +61,37 @@ const MyStake = ({
             disabled = {!connected}
             >Unstake</button>
           </form>
-        </div>
-    </div>
-  )
-}
 
-export default MyStake
+          <form onSubmit = {onCheckDetails} className={Styles.form} >
+            <input 
+              type = "text" 
+              placeholder="Enter Address" 
+              className={Styles.input}
+              value = {checkBalInput}
+              onChange = {onChangeInput}
+              id = "check"
+            />
+            <button type="submit"
+            className={Styles.check_btn}>
+              Check
+            </button>
+          </form>
+        </div>
+        <div>
+          <div className={Styles.display_user}>
+                <h5>Enter an address to get their stake details.</h5>
+
+                  {amount === "0.0" ? checkBalInput : address}
+                  <h1> {amount === undefined ? "0" :  `${amount} BRT`}</h1>
+                  {amount === "0.0" ? null : time}
+                  {valid}
+                  <div style={{ marginTop: "20px", fontWeight: "Bold" }}>
+                    {amount === "0.0" ? "You're not a staker" : null}
+                  </div>
+            </div>
+          </div>
+        </div>
+  );
+};
+
+export default MyStake;
