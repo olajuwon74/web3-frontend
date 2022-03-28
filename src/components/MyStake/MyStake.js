@@ -73,7 +73,7 @@ const MyStake = ({
             />
             <button type="submit"
             className={Styles.check_btn}>
-              Check
+              View
             </button>
           </form>
         </div>
