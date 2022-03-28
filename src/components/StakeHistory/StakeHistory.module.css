@@ -10,10 +10,11 @@
 }
 .table {
     width: 100%;
+    
 }
 
 .table_header {
-    background-color: #5ec186;
+    background-color: #151D3B;
     color: white;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
@@ -23,7 +24,7 @@
     
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    
+    position:static;
 }
 
 .table_head_data {
@@ -32,6 +33,7 @@
 
 .table_data {
     padding: 1rem;
+    color: #091458;
 }
 
 .stake_style {

@@ -1,25 +1,25 @@
 .root {
-    background-color: rgb(199, 236, 224);
+    background-color: #071246;
     padding: 2rem;
     display: flex;
     justify-content: space-between;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-family: ui-monospace;
     color: brown;
 }
 
 .logo2 {
-    color: rgb(8, 153, 107);
-    font-size: 2.1rem;
+    color: brown;
+    font-size: 1.5rem;
 }
 
 .connect_btn {
     background-color: #5ec186;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     border: 1px solid #fff;
     border-radius: 0.5rem;
     padding: 0.8rem 1rem;

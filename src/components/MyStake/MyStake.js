@@ -79,6 +79,7 @@ const MyStake = ({
         </div>
         <div>
           <div className={Styles.display_user}>
+            <br></br>
                 <h5>Enter an address to get their stake details.</h5>
 
                   {amount === "0.0" ? checkBalInput : address}
