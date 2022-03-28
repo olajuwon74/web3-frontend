@@ -80,7 +80,7 @@ const MyStake = ({
         <div>
           <div className={Styles.display_user}>
             <br></br>
-                <h5>Enter an address to get their stake details.</h5>
+                <h5>Enter an address to get stake details.</h5>
 
                   {amount === "0.0" ? checkBalInput : address}
                   <h1> {amount === undefined ? "0" :  `${amount} BRT`}</h1>
